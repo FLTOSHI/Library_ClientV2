@@ -23,7 +23,7 @@ public class AuthorService {
 
     public void getAll() {
         ListResponse<AuthorEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.allAuthors), listType);
+        data = service.getObject(http.get(properties.getAllAuthors), listType);
         if (data.getSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);

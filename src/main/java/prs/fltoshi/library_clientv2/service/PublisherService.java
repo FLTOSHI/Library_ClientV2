@@ -23,7 +23,7 @@ public class PublisherService {
 
     public void getAll() {
         ListResponse<PublisherEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.allPublisher), listType);
+        data = service.getObject(http.get(properties.getAllPublisher), listType);
         if (data.getSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);

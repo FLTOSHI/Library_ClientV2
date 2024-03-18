@@ -23,7 +23,7 @@ public class CityService {
 
     public void getAll() {
         ListResponse<CityEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.allCity), listType);
+        data = service.getObject(http.get(properties.getAllCity), listType);
         if (data.getSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);

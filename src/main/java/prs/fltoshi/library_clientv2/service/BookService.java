@@ -22,7 +22,7 @@ public class BookService {
 
     public void getAll() {
         ListResponse<BookEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.allBook), listType);
+        data = service.getObject(http.get(properties.getAllBook), listType);
         if (data.getSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);

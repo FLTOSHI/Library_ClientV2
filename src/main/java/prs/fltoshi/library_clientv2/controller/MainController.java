@@ -8,7 +8,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import prs.fltoshi.library_clientv2.entity.BookEntity;
 import prs.fltoshi.library_clientv2.service.HTTPService;
 
+
 public class MainController {
+HTTPService service = new HTTPService();
 
     @FXML
     private TableView<?> bookTable;
@@ -23,7 +25,7 @@ public class MainController {
     private TableColumn<?, ?> columnNumber;
 
     @FXML
-    private TableColumn<?, ?> columnPublishier;
+    private TableColumn<?, ?> columnPublisher;
 
     @FXML
     private TableColumn<?, ?> columnTitle;
@@ -70,8 +72,7 @@ public class MainController {
 
     @FXML
     void deleteBookAction(ActionEvent event) {
-//        HTTPService service = new HTTPService();
-//        System.out.println(service.get("http://localhost:28245/api/v1/book/all"));
+
     }
 
     @FXML
@@ -86,17 +87,18 @@ public class MainController {
 
     @FXML
     void deletePublisherAction(ActionEvent event) {
-        }
 
-        @FXML
+    }
+    @FXML
     private void initialize(){
-//        HTTPService service = new HTTPService();
-//            service.getAll();
-//            // связка поля таблицы со столбцами
-//            columnAuthor.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("author"));
-//            columnGenre.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("year"));
-//            columnTitle.setCellValueFactory(new PropertyValueFactory<BookEntity>, String("title"));
-//            columnPublishier.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("publisher"));
-//            bookTable.setItems(service.getData);
+        //получаем все книги с сервера
+        service.get();
+        //связываем поля таблицы со столбцами
+        columnAuthor.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("author"));
+        columnGenre.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("genre"));
+        columnNumber.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("year"));
+        columnTitle.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("title"));
+        columnPublisher.setCellValueFactory(new PropertyValueFactory<BookEntity, String>("publisher"));
+        bookTable.setItems(service.getData());
     }
 }

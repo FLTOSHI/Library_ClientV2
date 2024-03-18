@@ -23,7 +23,7 @@ public class GenreService {
 
     public void getAll() {
         ListResponse<GenreEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.allGenre), listType);
+        data = service.getObject(http.get(properties.getAllGenre), listType);
         if (data.getSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);

@@ -9,34 +9,37 @@ import java.util.Properties;
 public class ClientProperties {
     private final Properties properties = new Properties();
 
-    // Книги
+    // GET
     public String getAllBook;
-    public String findByIdBook;
-    public String saveBook;
-    public String updateBook;
+    public String getAllAuthors;
+    public String getAllCity;
+    public String getAllGenre;
+    public String getAllPublisher;
+
+    // FIND
+    public String findByIdAuthor;
     public String findByAuthorInBook;
     public String findByTitleInBook;
-    // Авторы
-    public String getAllAuthors;
-    public String findByIdAuthor;
-    public String saveAuthor;
-    public String updateAuthor;
-    // Города
-    public String getAllCity;
+    public String findByIdBook;
     public String findByIdCity;
-    public String saveCity;
-    public String updateCity;
-    // Жанры
-    public String getAllGenre;
     public String findByIdGenre;
-    public String saveGenre;
-    public String updateGenre;
-    // Издательства
-    public String getAllPublisher;
     public String findByIdPublisher;
+
+    // SAVE
+    public String saveAuthor;
+    public String saveBook;
+    public String saveCity;
+    public String saveGenre;
     public String savePublisher;
+
+    // UPDATE
+    public String updateAuthor;
+    public String updateBook;
+    public String updateCity;
+    public String updateGenre;
     public String updatePublisher;
-    // Удаление
+
+    // DELETE
     public String deleteBook;
     public String deleteAuthor;
     public String deleteCity;
@@ -47,38 +50,41 @@ public class ClientProperties {
         try (InputStream input = MainApplication.class.getClassLoader().getResourceAsStream("config.properties")) {
             System.out.println(input);
             properties.load(input); // Загрузка свойств из файла
+            // GET ALL
+            getAllAuthors = properties.getProperty("author.getAll");
             getAllBook = properties.getProperty("book.getAll");
-            findByIdBook = properties.getProperty("book.findById");
-            saveBook = properties.getProperty("book.save");
-            updateBook = properties.getProperty("book.update");
-            //
+            getAllCity = properties.getProperty("city.getAll");
+            getAllGenre = properties.getProperty("genre.getAll");
+            getAllPublisher = properties.getProperty("publisher.getAll");
+
+            // FIND
+            findByIdAuthor = properties.getProperty("author.findById");
             findByAuthorInBook = properties.getProperty("book.findByAuthor");
             findByTitleInBook = properties.getProperty("book.findByTitle");
-            getAllAuthors = properties.getProperty("author.getAll");
-            findByIdAuthor = properties.getProperty("author.findById");
-            saveAuthor = properties.getProperty("author.save");
-            updateAuthor = properties.getProperty("author.update");
-            //
-            getAllCity = properties.getProperty("city.getAll");
             findByIdCity = properties.getProperty("city.findById");
-            saveCity = properties.getProperty("city.save");
-            updateCity = properties.getProperty("city.update");
-            //
-            getAllGenre = properties.getProperty("genre.getAll");
             findByIdGenre = properties.getProperty("genre.findById");
-            saveGenre = properties.getProperty("genre.save");
-            updateGenre = properties.getProperty("genre.update");
-            //
-            getAllPublisher = properties.getProperty("publisher.getAll");
             findByIdPublisher = properties.getProperty("publisher.findById");
+
+            // SAVE
+            saveAuthor = properties.getProperty("author.save");
+            saveBook = properties.getProperty("book.save");
+            saveCity = properties.getProperty("city.save");
+            saveGenre = properties.getProperty("genre.save");
             savePublisher = properties.getProperty("publisher.save");
+
+            // UPDATE
+            updateAuthor = properties.getProperty("author.update");
+            updateBook = properties.getProperty("book.update");
+            updateCity = properties.getProperty("city.update");
+            updateGenre = properties.getProperty("genre.update");
             updatePublisher = properties.getProperty("publisher.update");
-            //
+
+            // DELETE
+            deleteAuthor = properties.getProperty("author.del");
             deleteBook = properties.getProperty("book.del");
             deleteCity = properties.getProperty("city.del");
             deleteGenre = properties.getProperty("genre.del");
             deletePublisher = properties.getProperty("publisher.del");
-            deleteAuthor = properties.getProperty("author.del");
         } catch (IOException exception) {
             exception.printStackTrace(); // Обработка исключения в случае потопа
         }

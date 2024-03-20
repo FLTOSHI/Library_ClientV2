@@ -1,6 +1,6 @@
 package prs.fltoshi.library_clientv2.service;
 
-import prs.fltoshi.library_clientv2.entity.AuthorEntity;
+import prs.fltoshi.library_clientv2.entity.*;
 import prs.fltoshi.library_clientv2.response.BaseResponse;
 import prs.fltoshi.library_clientv2.response.DataResponse;
 import prs.fltoshi.library_clientv2.response.ListResponse;

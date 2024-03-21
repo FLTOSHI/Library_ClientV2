@@ -59,7 +59,7 @@
          </children>
       </HBox>
    </bottom>
-   <right>
+   <center>
       <TableView fx:id="bookTable" prefHeight="373.0" prefWidth="607.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="columnNumber" prefWidth="28.0" text="№" />
@@ -69,5 +69,5 @@
             <TableColumn fx:id="columnPublisher" minWidth="0.0" prefWidth="133.0" text="Издательство" />
         </columns>
       </TableView>
-   </right>
+   </center>
 </BorderPane>

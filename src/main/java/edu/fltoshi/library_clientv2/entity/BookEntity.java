@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 public class BookEntity {
     private Long id;
+    private String title;
     private AuthorEntity author;
     private PublisherEntity publisher;
     private GenreEntity genre;

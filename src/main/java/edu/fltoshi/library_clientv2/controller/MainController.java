@@ -14,58 +14,70 @@ public class MainController {
     BookService service = new BookService();
 
     @FXML
-    private TableView <BookEntity> bookTable;
+    private TableView<BookEntity> bookTable;
 
     @FXML
-    private TableColumn <BookEntity, String> columnAuthor;
+    private TableColumn<BookEntity, String> columnAuthor;
 
     @FXML
-    private TableColumn <BookEntity, String> columnGenre;
+    private TableColumn<BookEntity, String> columnGenre;
 
     @FXML
-    private TableColumn <BookEntity, String> columnNumber;
+    private TableColumn<BookEntity, String> columnNumber;
 
     @FXML
-    private TableColumn <BookEntity, String> columnPublisher;
+    private TableColumn<BookEntity, String> columnPublisher;
 
     @FXML
-    private TableColumn <BookEntity, String> columnTitle;
+    private TableColumn<BookEntity, String> columnTitle;
 
     @FXML
-    void addBookAction(ActionEvent event) {}
+    void addBookAction(ActionEvent event) {
+    }
 
     @FXML
-    void addOrChangeAuthorAction(ActionEvent event) {}
+    void addOrChangeAuthorAction(ActionEvent event) {
+    }
 
     @FXML
-    void addOrChangeCityAction(ActionEvent event) {}
+    void addOrChangeCityAction(ActionEvent event) {
+    }
 
     @FXML
-    void addOrChangeGenreAction(ActionEvent event) {}
+    void addOrChangeGenreAction(ActionEvent event) {
+    }
 
     @FXML
-    void addOrChangePublisherAction(ActionEvent event) {}
+    void addOrChangePublisherAction(ActionEvent event) {
+    }
 
     @FXML
-    void changeBookAction(ActionEvent event) {}
+    void changeBookAction(ActionEvent event) {
+    }
 
     @FXML
-    void closeAction(ActionEvent event) {}
+    void closeAction(ActionEvent event) {
+    }
 
     @FXML
-    void deleteAuthorAction(ActionEvent event) {}
+    void deleteAuthorAction(ActionEvent event) {
+    }
 
     @FXML
-    void deleteBookAction(ActionEvent event) {}
+    void deleteBookAction(ActionEvent event) {
+    }
 
     @FXML
-    void deleteCityAction(ActionEvent event) {}
+    void deleteCityAction(ActionEvent event) {
+    }
 
     @FXML
-    void deleteGenreAction(ActionEvent event) {}
+    void deleteGenreAction(ActionEvent event) {
+    }
 
     @FXML
-    void deletePublisherAction(ActionEvent event) {}
+    void deletePublisherAction(ActionEvent event) {
+    }
 
     @FXML
     private void initialize() {

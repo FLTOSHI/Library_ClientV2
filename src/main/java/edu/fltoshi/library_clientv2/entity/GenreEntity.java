@@ -12,4 +12,11 @@ public class GenreEntity {
     private Long id;
     private String title;
     private List<BookEntity> books;
+
+    @Override
+    public String toString() {
+        return "GenreEntity{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }

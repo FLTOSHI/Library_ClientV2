@@ -17,4 +17,14 @@ public class AuthorEntity {
     private String name;
     private String surname;
     private List<BookEntity> books;
+
+    @Override
+    public String toString() {
+        return "AuthorEntity{" +
+                "lastname='" + lastname + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
+
 }

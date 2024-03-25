@@ -4,7 +4,6 @@ import edu.fltoshi.library_clientv2.entity.AuthorEntity;
 import edu.fltoshi.library_clientv2.service.AuthorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;

@@ -8,13 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="prs.fltoshi.library_clientv2.controller.addAuthorController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.library_clientv2.controller.AddAuthorController">
    <children>
-      <ListView fx:id="dataList" layoutX="286.0" layoutY="14.0" prefHeight="370.0" prefWidth="300.0" />
+      <ListView fx:id="dataList" layoutX="286.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="370.0" prefWidth="300.0" />
       <Label layoutX="12.0" layoutY="41.0" text="Фамилия">
          <font>
             <Font size="16.0" />
@@ -35,9 +31,9 @@
       <TextField fx:id="textSurname" layoutX="105.0" layoutY="125.0" promptText="Отчество автора" />
       <ButtonBar layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
         <buttons>
-          <Button fx:id="addAction" mnemonicParsing="false" text="Добавить" />
-            <Button fx:id="deleteAction" mnemonicParsing="false" text="Удалить" />
-            <Button fx:id="cancelAction" mnemonicParsing="false" text="Отмена" />
+          <Button mnemonicParsing="false" onMouseClicked="#addAction" text="Добавить" />
+            <Button mnemonicParsing="false" onMouseClicked="#deleteAction" text="Удалить" />
+            <Button mnemonicParsing="false" onMouseClicked="#cancelAction" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

@@ -16,8 +16,6 @@ public class PublisherEntity {
 
     @Override
     public String toString() {
-        return "PublisherEntity{" +
-                "title='" + title + '\'' +
-                '}';
+        return title;
     }
 }

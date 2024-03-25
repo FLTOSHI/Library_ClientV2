@@ -20,11 +20,7 @@ public class AuthorEntity {
 
     @Override
     public String toString() {
-        return "AuthorEntity{" +
-                "lastname='" + lastname + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
+        return lastname + ", " + name + " " + surname;
     }
 
 }

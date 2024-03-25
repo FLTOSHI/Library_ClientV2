@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
+
 public class AuthorService {
     @Getter
     private ObservableList<AuthorEntity> data = FXCollections.observableArrayList();
@@ -26,7 +28,7 @@ public class AuthorService {
         data = service.getObject(http.get(properties.getAllAuthor()), listType);
         if (data.isSuccess()) {
             this.data.addAll(data.getData());
-            this.data.forEach(System.out::println);
+            sort();
         } else {
             throw new RuntimeException(data.getMessage());
         }
@@ -41,6 +43,21 @@ public class AuthorService {
         } else {
             throw new RuntimeException(response.getMessage());
         }
+    }
+
+    public void update(AuthorEntity after, AuthorEntity before) {
+        System.out.println(before);
+        System.out.println(after);
+        String temp = http.put(properties.getUpdateAuthor(), service.getJson(after));
+        DataResponse<AuthorEntity> response = service.getObject(temp, dataType);
+        if (response.isSuccess()) {
+            this.data.remove(before);
+            this.data.add(after);
+            sort();
+        } else {
+            throw new RuntimeException(response.getMessage());
+        }
+
     }
 
     public void delete(AuthorEntity data) {
@@ -61,5 +78,9 @@ public class AuthorService {
         } else {
             throw new RuntimeException(response.getMessage());
         }
+    }
+
+    private void sort(){
+        data.sort(Comparator.comparing(AuthorEntity::getLastname));
     }
 }

@@ -15,8 +15,6 @@ public class GenreEntity {
 
     @Override
     public String toString() {
-        return "GenreEntity{" +
-                "title='" + title + '\'' +
-                '}';
+        return title;
     }
 }

@@ -1,5 +1,6 @@
 package edu.fltoshi.library_clientv2.controller;
 
+import edu.fltoshi.library_clientv2.MainApplication;
 import edu.fltoshi.library_clientv2.service.BookService;
 import javafx.scene.control.cell.PropertyValueFactory;
 import edu.fltoshi.library_clientv2.entity.BookEntity;
@@ -37,6 +38,7 @@ public class MainController {
 
     @FXML
     void addOrChangeAuthorAction(ActionEvent event) {
+        MainApplication.showAuthorDialog();
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package edu.fltoshi.library_clientv2.service;
 
+import edu.fltoshi.library_clientv2.entity.AuthorEntity;
 import edu.fltoshi.library_clientv2.entity.PublisherEntity;
 import edu.fltoshi.library_clientv2.response.BaseResponse;
 import edu.fltoshi.library_clientv2.response.DataResponse;
@@ -10,6 +11,8 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
+
 public class PublisherService {
     @Getter
     private ObservableList<PublisherEntity> data = FXCollections.observableArrayList();
@@ -42,6 +45,25 @@ public class PublisherService {
             throw new RuntimeException(response.getMessage());
         }
     }
+
+    public void update(PublisherEntity after, PublisherEntity before) {
+        System.out.println(before);
+        System.out.println(after);
+        String temp = http.put(properties.getUpdatePublisher(), service.getJson(after));
+        DataResponse<PublisherEntity> response = service.getObject(temp, dataType);
+        if (response.isSuccess()) {
+            this.data.remove(before);
+            this.data.add(after);
+            sort();
+        } else {
+            throw new RuntimeException(response.getMessage());
+        }
+    }
+
+    private void sort(){
+        data.sort(Comparator.comparing(PublisherEntity::getTitle));
+    }
+
 
     public void delete(PublisherEntity data) {
         String temp = http.delete(properties.getDeletePublisher(), data.getId());

@@ -10,9 +10,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.util.Optional;
+
 public class MainController {
 
     BookService service = new BookService();
+    private Optional<BookEntity> book = Optional.empty();
+
+    public void setBook(Optional<BookEntity> book) {
+        this.book = book;
+        if (book.isPresent()) {
+            if (book.get().getId() != null) {
+                service.update(book.get());
+            } else service.add(book.get());
+        }
+    }
+
 
     @FXML
     private TableView<BookEntity> bookTable;
@@ -34,6 +47,8 @@ public class MainController {
 
     @FXML
     void addBookAction(ActionEvent event) {
+        Optional<BookEntity> book = Optional.empty();
+        MainApplication.showBookDialog(book);
     }
 
     @FXML
@@ -51,6 +66,7 @@ public class MainController {
 
     @FXML
     void addOrChangePublisherAction(ActionEvent event) {
+        MainApplication.showPublisherDialog();
     }
 
     @FXML

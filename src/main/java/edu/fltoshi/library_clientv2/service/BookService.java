@@ -10,6 +10,7 @@ import edu.fltoshi.library_clientv2.response.DataResponse;
 import edu.fltoshi.library_clientv2.response.ListResponse;
 
 import java.lang.reflect.Type;
+import java.util.Comparator;
 
 public class BookService {
     @Getter
@@ -41,6 +42,22 @@ public class BookService {
         } else {
             throw new RuntimeException(response.getMessage());
         }
+    }
+
+    public void update(BookEntity after) {
+        System.out.println(after);
+        String temp = http.put(prop.getUpdateBook(), service.getJson(after));
+        DataResponse<BookEntity> response = service.getObject(temp, dataType);
+        if (response.isSuccess()) {
+            this.data.add(after);
+            sort();
+        } else {
+            throw new RuntimeException(response.getMessage());
+        }
+    }
+
+    private void sort(){
+        data.sort(Comparator.comparing(BookEntity::getTitle));
     }
 
     public void delete(BookEntity data) {

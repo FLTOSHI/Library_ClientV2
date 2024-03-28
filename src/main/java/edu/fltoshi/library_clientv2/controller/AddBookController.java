@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Optional;
 
 public class AddBookController {
@@ -21,8 +22,8 @@ public class AddBookController {
     @Setter
     private Optional<BookEntity> book;
 
-    public void start(){
-        if(book.isPresent()) {
+    public void start() {
+        if (book.isPresent()) {
             textTitle.setText(book.get().getTitle());
             textYear.setText(book.get().getYear());
             ComboBoxAuthor.setValue(book.get().getAuthor());
@@ -52,15 +53,12 @@ public class AddBookController {
 
     @FXML
     void addAction(ActionEvent event) {
-////        BookEntity temp = BookEntity.builder()
-////                .title(textTitle.getText())
-////                .year(textYear.getText())
-////                .genre(ComboBoxGenre.getSelectionModel().getSelectedItem())
-////                .publisher(ComboBoxPublisher.getSelectionModel().getSelectedItem())
-////                .author(ComboBoxAuthor.getSelectionModel().getSelectedItem())
-////                .build();
-//        book = Optional.of(temp);
-//        System.out.println(temp);
+        BookEntity temp = BookEntity.builder()
+                .title(textTitle.getText())
+                .year(textYear.getText())
+                .genre(ComboBoxGenre.getSelectionModel().getSelectedItem())
+        book = Optional.of(temp);
+        System.out.println(temp);
     }
 
     @FXML

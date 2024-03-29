@@ -57,6 +57,9 @@ public class AddBookController {
                 .title(textTitle.getText())
                 .year(textYear.getText())
                 .genre(ComboBoxGenre.getSelectionModel().getSelectedItem())
+                .publisher(ComboBoxPublisher.getSelectionModel().getSelectedItem())
+                .author(ComboBoxAuthor.getSelectionModel().getSelectedItem())
+                .build();
         book = Optional.of(temp);
         System.out.println(temp);
     }

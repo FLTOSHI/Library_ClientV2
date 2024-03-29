@@ -53,20 +53,23 @@ public class MainController {
 
     @FXML
     void addOrChangeAuthorAction(ActionEvent event) {
-        MainApplication.showAuthorDialog();
+        MainApplication.showDialog("add-author-view.fxml", "Работа с авторами");
     }
 
     @FXML
     void addOrChangeCityAction(ActionEvent event) {
+        MainApplication.showDialog("add-city-view.fxml", "Работа с городами");
     }
 
     @FXML
     void addOrChangeGenreAction(ActionEvent event) {
+        MainApplication.showDialog("add-genre-view.fxml", "Работа с жанрами");
+
     }
 
     @FXML
     void addOrChangePublisherAction(ActionEvent event) {
-        MainApplication.showPublisherDialog();
+        MainApplication.showDialog("add-publisher-view.fxml", "Работа с издательствами");
     }
 
     @FXML

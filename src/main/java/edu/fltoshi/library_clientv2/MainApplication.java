@@ -26,35 +26,19 @@ public class MainApplication extends Application {
         stage.show();
     }
 
-    public static void showAuthorDialog() {
+    public static void showDialog(String nameView, String title){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApplication.class.getResource("add-author-view.fxml"));
+            loader.setLocation(MainApplication.class.getResource(nameView));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Добавить/изменить автора");
+            dialogStage.setTitle(title);
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-            dialogStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void showPublisherDialog() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApplication.class.getResource("add-publisher-view.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Добавить/изменить автора");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-            dialogStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
+            dialogStage.show();
+        } catch (IOException exception){
+            exception.printStackTrace();
         }
     }
 

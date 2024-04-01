@@ -19,6 +19,20 @@
     -fx-border-width: 2;
 }
 
+.comboBox{
+    -fx-font-family: "SansSerif";
+    -fx-background-color: #C0C0C0;
+    -fx-border-color: #4C4C4C;
+    -fx-border-width: 2;
+}
+
+.textField{
+    -fx-font-family: "SansSerif";
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #4C4C4C;
+    -fx-border-width: 2;
+}
+
 .tableView {
     -fx-font-family: "SansSerif";
     -fx-background-image: url(tableView_background.jpg);
@@ -39,5 +53,11 @@
     -fx-border-radius: 0;
     -fx-border-width: 1;
     -fx-border-color: #999999;
+}
 
+.listView {
+    -fx-background-image: url(tableView_background.jpg);
+    -fx-border-radius: 0;
+    -fx-border-width: 1;
+    -fx-border-color: #999999;
 }

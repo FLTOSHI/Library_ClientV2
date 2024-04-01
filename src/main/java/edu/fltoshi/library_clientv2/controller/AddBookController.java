@@ -7,10 +7,14 @@ import edu.fltoshi.library_clientv2.entity.PublisherEntity;
 import edu.fltoshi.library_clientv2.service.AuthorService;
 import edu.fltoshi.library_clientv2.service.GenreService;
 import edu.fltoshi.library_clientv2.service.PublisherService;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+
+import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,6 +56,12 @@ public class AddBookController {
     private TextField textYear;
 
     @FXML
+    private Button addButton;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
     void addAction(ActionEvent event) {
         BookEntity temp = BookEntity.builder()
                 .title(textTitle.getText())
@@ -62,11 +72,14 @@ public class AddBookController {
                 .build();
         book = Optional.of(temp);
         System.out.println(temp);
+//        Stage stage = (Stage) addButton.getScene().getWindow();
+//        stage.close();
     }
 
     @FXML
     void cancelAction(ActionEvent event) {
-
+//        Stage stage = (Stage) cancelButton.getScene().getWindow();
+//        stage.close();
     }
 
     @FXML
@@ -78,5 +91,4 @@ public class AddBookController {
         ComboBoxGenre.setItems(genreService.getData());
         ComboBoxPublisher.setItems(publisherService.getData());
     }
-
 }

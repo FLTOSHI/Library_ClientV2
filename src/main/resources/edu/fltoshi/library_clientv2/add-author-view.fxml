@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.library_clientv2.controller.AddAuthorController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="HBox" stylesheets="@Win98.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.library_clientv2.controller.AddAuthorController">
    <children>
-      <ListView fx:id="dataList" layoutX="286.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="370.0" prefWidth="300.0" />
+      <ListView fx:id="dataList" layoutX="286.0" layoutY="14.0" onMouseClicked="#onMouseClickDataList" prefHeight="324.0" prefWidth="300.0" styleClass="tableView" stylesheets="@Win98.css" />
       <Label layoutX="12.0" layoutY="41.0" text="Фамилия">
          <font>
             <Font size="16.0" />
@@ -26,14 +26,14 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="textLastname" layoutX="105.0" layoutY="41.0" promptText="Фамилия автора" />
-      <TextField fx:id="textFirstname" layoutX="105.0" layoutY="82.0" promptText="Имя автора" />
-      <TextField fx:id="textSurname" layoutX="105.0" layoutY="125.0" promptText="Отчество автора" />
-      <ButtonBar layoutY="150.0" prefHeight="50.0" prefWidth="200.0">
+      <TextField fx:id="textLastname" layoutX="105.0" layoutY="41.0" promptText="Фамилия автора" styleClass="textField" stylesheets="@Win98.css" />
+      <TextField fx:id="textFirstname" layoutX="105.0" layoutY="82.0" promptText="Имя автора" styleClass="textField" stylesheets="@Win98.css" />
+      <TextField fx:id="textSurname" layoutX="105.0" layoutY="125.0" promptText="Отчество автора" styleClass="textField" stylesheets="@Win98.css" />
+      <ButtonBar layoutY="350.0" prefHeight="50.0" prefWidth="600.0" styleClass="buttonBar" stylesheets="@Win98.css">
         <buttons>
-          <Button mnemonicParsing="false" onMouseClicked="#addAction" text="Добавить" />
-            <Button mnemonicParsing="false" onMouseClicked="#deleteAction" text="Удалить" />
-            <Button mnemonicParsing="false" onMouseClicked="#cancelAction" text="Отмена" />
+          <Button fx:id="addButton" mnemonicParsing="false" onAction="#addAction" onMouseClicked="#addAction" stylesheets="@Win98.css" text="Добавить" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAction" onMouseClicked="#deleteAction" stylesheets="@Win98.css" text="Удалить" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAction" onMouseClicked="#cancelAction" stylesheets="@Win98.css" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

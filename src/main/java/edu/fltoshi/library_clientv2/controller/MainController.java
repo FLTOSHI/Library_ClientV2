@@ -2,6 +2,7 @@ package edu.fltoshi.library_clientv2.controller;
 
 import edu.fltoshi.library_clientv2.MainApplication;
 import edu.fltoshi.library_clientv2.service.BookService;
+import edu.fltoshi.library_clientv2.service.HTTPService;
 import javafx.scene.control.cell.PropertyValueFactory;
 import edu.fltoshi.library_clientv2.entity.BookEntity;
 
@@ -74,6 +75,7 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
+        MainApplication.showDialog("add-book-view.fxml", "Работа с книгами");
     }
 
     @FXML
@@ -86,6 +88,8 @@ public class MainController {
 
     @FXML
     void deleteBookAction(ActionEvent event) {
+        HTTPService service = new HTTPService();
+        System.out.println(service.get("http://localhost:2825/api/v1/books/all"));
     }
 
     @FXML

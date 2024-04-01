@@ -4,10 +4,12 @@ import edu.fltoshi.library_clientv2.entity.AuthorEntity;
 import edu.fltoshi.library_clientv2.service.AuthorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class AddAuthorController {
     private final AuthorService service = new AuthorService();
@@ -29,6 +31,15 @@ public class AddAuthorController {
     @FXML
     private TextField textSurname;
 
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button deleteButton;
+
 
     @FXML
     void addAction(ActionEvent event) {
@@ -45,13 +56,22 @@ public class AddAuthorController {
         textLastname.clear();
         textFirstname.clear();
         textSurname.clear();
+
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    void deleteAction(ActionEvent event){}
+    void deleteAction(ActionEvent event){
+        Stage stage = (Stage) deleteButton.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
-    void cancelAction(ActionEvent event){}
+    void cancelAction(ActionEvent event){
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     void onMouseClickDataList(MouseEvent event){

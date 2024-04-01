@@ -1,5 +1,6 @@
 package edu.fltoshi.library_clientv2.controller;
 
+import edu.fltoshi.library_clientv2.entity.BookEntity;
 import edu.fltoshi.library_clientv2.entity.CityEntity;
 import edu.fltoshi.library_clientv2.service.CityService;
 import javafx.event.ActionEvent;
@@ -8,8 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Optional;
 
 public class AddCityController {
+
+    @Getter
+    @Setter
+    private Optional<CityEntity> city;
 
     CityService service = new CityService();
 
@@ -30,6 +39,10 @@ public class AddCityController {
 
     @FXML
     void addAction(ActionEvent event) {
+        CityEntity temp = CityEntity.builder()
+                .title(textTitle.getText()).build();
+        System.out.println(temp);
+
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }

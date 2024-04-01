@@ -72,14 +72,15 @@ public class AddBookController {
                 .build();
         book = Optional.of(temp);
         System.out.println(temp);
-//        Stage stage = (Stage) addButton.getScene().getWindow();
-//        stage.close();
+
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void cancelAction(ActionEvent event) {
-//        Stage stage = (Stage) cancelButton.getScene().getWindow();
-//        stage.close();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

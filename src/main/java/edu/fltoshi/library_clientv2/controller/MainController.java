@@ -22,7 +22,7 @@ public class MainController {
         this.book = book;
         if (book.isPresent()) {
             if (book.get().getId() != null) {
-                service.update(book.get());
+                service.update(book.get(), bookTable.getSelectionModel().getSelectedItem());
             } else service.add(book.get());
         }
     }
@@ -74,6 +74,7 @@ public class MainController {
 
     @FXML
     void changeBookAction(ActionEvent event) {
+        Optional<BookEntity> book = Optional.of(bookTable.getSelectionModel().getSelectedItem());
         MainApplication.showDialog("add-book-view.fxml", "Работа с книгами");
     }
 

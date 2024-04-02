@@ -73,6 +73,14 @@ public class AddBookController {
         book = Optional.of(temp);
         System.out.println(temp);
 
+        if(book.isEmpty()) {
+            book = Optional.of(temp);
+            } else {
+            temp.setId(book.get().getId());
+            book = Optional.of(temp);
+        }
+
+
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }

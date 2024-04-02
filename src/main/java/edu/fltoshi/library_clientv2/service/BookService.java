@@ -44,11 +44,12 @@ public class BookService {
         }
     }
 
-    public void update(BookEntity after) {
+    public void update(BookEntity before, BookEntity after) {
         System.out.println(after);
         String temp = http.put(prop.getUpdateBook(), service.getJson(after));
         DataResponse<BookEntity> response = service.getObject(temp, dataType);
         if (response.isSuccess()) {
+            this.data.remove(before);
             this.data.add(after);
             sort();
         } else {

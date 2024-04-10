@@ -11,17 +11,17 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="HBox" stylesheets="@Win98.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fltoshi.library_clientv2.controller.AddCityController">
    <children>
       <TextField fx:id="textTitle" layoutX="100.0" layoutY="15.0" prefHeight="25.0" prefWidth="200.0" promptText="Название города" styleClass="textField" stylesheets="@Win98.css" />
-      <ListView fx:id="dataList" layoutX="316.0" layoutY="15.0" prefHeight="331.0" prefWidth="270.0" styleClass="listView" stylesheets="@Win98.css" />
+      <ListView fx:id="dataList" layoutX="316.0" layoutY="15.0" onMouseClicked="#onMouseClickDataList" prefHeight="331.0" prefWidth="270.0" styleClass="listView" stylesheets="@Win98.css" />
       <Label layoutX="14.0" layoutY="15.0" prefHeight="25.0" prefWidth="125.0" text="Название">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ButtonBar layoutY="365.0" prefHeight="50.0" prefWidth="600.0" styleClass="buttonBar" stylesheets="@Win98.css">
+      <ButtonBar layoutY="353.0" prefHeight="50.0" prefWidth="600.0" styleClass="buttonBar" stylesheets="@Win98.css">
          <buttons>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#addAction" text="Добавить" />
             <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAction" text="Удалить" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAction" text="Отмена" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAction" onMouseClicked="#editModeHandler" text="Отмена" />
          </buttons>
       </ButtonBar>
    </children>

@@ -33,7 +33,7 @@
         <buttons>
           <Button fx:id="addButton" mnemonicParsing="false" onAction="#addAction" onMouseClicked="#addAction" stylesheets="@Win98.css" text="Добавить" />
             <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAction" onMouseClicked="#deleteAction" stylesheets="@Win98.css" text="Удалить" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAction" onMouseClicked="#cancelAction" stylesheets="@Win98.css" text="Отмена" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAction" onMouseClicked="#editModeHandler" stylesheets="@Win98.css" text="Отмена" />
         </buttons>
       </ButtonBar>
    </children>

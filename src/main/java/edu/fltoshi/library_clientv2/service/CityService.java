@@ -53,6 +53,17 @@ public class CityService {
         }
     }
 
+    public void update(CityEntity data, CityEntity selectionElement) {
+        String temp = http.put(properties.getUpdateCity(), service.getJson(data));
+        DataResponse<CityEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
+            this.data.add(respose.getData());
+
+        } else {
+            throw new RuntimeException(respose.getMessage());
+        }
+    }
+
     public void findById(CityEntity data) {
         String temp = http.get(properties.getFindByIdCity()) + data.getId();
         DataResponse<CityEntity> response = service.getObject(temp, dataType);

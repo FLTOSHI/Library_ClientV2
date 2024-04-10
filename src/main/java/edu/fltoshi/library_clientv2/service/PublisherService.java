@@ -67,7 +67,7 @@ public class PublisherService {
 
     public void delete(PublisherEntity data) {
         String temp = http.delete(properties.getDeletePublisher(), data.getId());
-        DataResponse<PublisherEntity> response = service.getObject(temp, BaseResponse.class);
+        BaseResponse response = service.getObject(temp, BaseResponse.class);
         if (response.isSuccess()) {
             this.data.remove(data);
         } else {

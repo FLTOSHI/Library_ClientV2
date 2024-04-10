@@ -75,7 +75,7 @@ public class MainController {
     @FXML
     void changeBookAction(ActionEvent event) {
         Optional<BookEntity> book = Optional.of(bookTable.getSelectionModel().getSelectedItem());
-        MainApplication.showDialog("add-book-view.fxml", "Работа с книгами");
+        MainApplication.showBookDialog(book);
     }
 
     @FXML
@@ -88,8 +88,7 @@ public class MainController {
 
     @FXML
     void deleteBookAction(ActionEvent event) {
-        HTTPService service = new HTTPService();
-        System.out.println(service.get("http://localhost:28245/api/v1/books/all"));
+        service.delete(bookTable.getSelectionModel().getSelectedItem());
     }
 
     @FXML

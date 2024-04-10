@@ -15,18 +15,21 @@ import java.util.Comparator;
 public class BookService {
     @Getter
     private ObservableList<BookEntity> data = FXCollections.observableArrayList();
-    private final HTTPService http = new HTTPService();
+    private  final HTTPService http = new HTTPService();
     JSONService service = new JSONService();
     ClientProperties prop = new ClientProperties();
-    private Type dataType = new TypeToken<DataResponse<BookEntity>>() {
-    }.getType();
-    private Type listType = new TypeToken<ListResponse<BookEntity>>() {
-    }.getType();
+    private Type dataType = new TypeToken<DataResponse<BookEntity>>(){
+
+    }.getType(); //фиксируем тип DataResponce<BookEntity>
+
+    private Type listType = new TypeToken<ListResponse<BookEntity>>(){
+
+    }.getType(); //фиксируем тип DataResponce<BookEntity>
 
     public void getAll() {
         ListResponse<BookEntity> data = new ListResponse<>();
         data = service.getObject(http.get(prop.getAllBook()), listType);
-        if(data.isSuccess()) {
+        if (data.isSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);
         } else {
@@ -36,28 +39,30 @@ public class BookService {
 
     public void add(BookEntity data) {
         String temp = http.post(prop.getSaveBook(), service.getJson(data));
-        DataResponse<BookEntity> response = service.getObject(temp, dataType);
-        if (response.isSuccess()) {
-            this.data.add(response.getData());
+        DataResponse<BookEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
+            this.data.add(respose.getData());
+
         } else {
-            throw new RuntimeException(response.getMessage());
+            throw new RuntimeException(respose.getMessage());
         }
     }
 
-    public void update(BookEntity before, BookEntity after) {
+    public void update(BookEntity after, BookEntity before) {
+        System.out.println(before);
         System.out.println(after);
         String temp = http.put(prop.getUpdateBook(), service.getJson(after));
-        DataResponse<BookEntity> response = service.getObject(temp, dataType);
-        if (response.isSuccess()) {
+        DataResponse<BookEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
             this.data.remove(before);
             this.data.add(after);
-            sort();
         } else {
-            throw new RuntimeException(response.getMessage());
+            throw new RuntimeException(respose.getMessage());
         }
     }
 
-    private void sort(){
+
+    private void sort() {
         data.sort(Comparator.comparing(BookEntity::getTitle));
     }
 

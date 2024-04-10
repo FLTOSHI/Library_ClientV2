@@ -11,64 +11,72 @@ public class HTTPService {
 
     public String get(String url) {
         String result = "";
-        Request request = new Request.Builder().url(url).build();
+        Request request = new Request
+                .Builder()
+                .url(url)
+                .build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Ну, запрос к серверу провалился, вот код: " + response.code() + " " + response.message());
+                throw new IOException("Зaпpoc к cepвepy не был успешен: " +
+                        response.code() + " " + response.message());
             }
+
             result = response.body().string();
-        } catch (IOException exception) {
-            exception.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             return result;
         }
     }
 
-    public String post(String url, String data) {
+    public String post(String url, String data){
         String result = "";
         RequestBody body = RequestBody.create(data, JSON);
-        Request.Builder requestBuilder = new Request.Builder().url(url).put(body);
+        Request.Builder requestBuilder = new Request.Builder().url(url).post(body);
         Request request = requestBuilder.build();
         try (Response response = client.newCall(request).execute()) {
+
             if (!response.isSuccessful()) {
-                throw new IOException("Ну, запрос к серверу провалился, вот код: " + response.code() + " " + response.message());
+                throw new IOException("Запрос к серверу не был успешен: " + response.code() + " " + response.message());
             }
             result = response.body().string();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } finally {
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
             return result;
         }
     }
 
-    public String put(String url, String data) {
+    public String put(String url, String data){
         String result = "";
         RequestBody body = RequestBody.create(data, JSON);
-        Request.Builder requestBuilder = new Request.Builder().url(url).put(body);
+        Request.Builder requestBuilder = new Request.Builder().url(url).post(body);
         Request request = requestBuilder.build();
         try (Response response = client.newCall(request).execute()) {
+
             if (!response.isSuccessful()) {
-                throw new IOException("Ну, запрос к серверу провалился, вот код: " + response.code() + " " + response.message());
+                throw new IOException("Запрос к серверу не был успешен: " + response.code() + " " + response.message());
             }
             result = response.body().string();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } finally {
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
             return result;
         }
     }
 
     public String delete(String url, Long id) {
         String result = "";
-        Request.Builder requestBuilder = new Request.Builder().url(url + id).delete();
-        Request request = requestBuilder.build();
+        Request.Builder requestBuild = new Request.Builder().url(url + id).delete();
+        Request request = requestBuild.build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Ну, запрос к серверу провалился, вот код: " + response.code() + " " + response.message());
+                throw new IOException("Запрос к серверу не был успешен: " + response.code() + " " + response.message());
+
             }
             result = response.body().string();
-        } catch (IOException exception) {
-            exception.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             return result;
         }

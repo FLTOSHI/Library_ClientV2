@@ -42,13 +42,17 @@ public class AddPublisherController {
     private Button deleteButton;
 
 
-    private PublisherEntity getSelectionElement() {
-        PublisherEntity temp = dataList.getSelectionModel().getSelectedItem();
-        return temp;
+    // Actions
+    @FXML
+    private void initialize() {
+        cityService.getAll();
+        publisherService.getAll();
+        dataList.setItems(publisherService.getData());
+        ComboBoxCity.setItems(cityService.getData());
     }
 
     @FXML
-    private void addAction(ActionEvent event) {
+    void addAction(ActionEvent event) {
         PublisherEntity publisher = new PublisherEntity();
         publisher.setTitle(textTitle.getText());
         publisher.setCity(ComboBoxCity.getSelectionModel().getSelectedItem());
@@ -59,43 +63,43 @@ public class AddPublisherController {
             publisherService.update(publisher, getSelectionElement());
         }
         textTitle.clear();
-
-//        Stage stage = (Stage) addButton.getScene().getWindow();
-//        stage.close();
-    }
-
-    @FXML
-    private void cancelAction(ActionEvent event) {
-        addFlag = true;
-
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void deleteAction(ActionEvent event) {
-        publisherService.delete(getSelectionElement());
+    public void cancelAction(ActionEvent event) {
+        addFlag = true;
     }
 
     @FXML
-    void clickedToList(MouseEvent event) {
+    void deleteAction(ActionEvent event) {
+        publisherService.delete(getSelectionElement());
+        textTitle.clear();
+    }
+
+    @FXML
+    void onMouseClickDataList(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
                 addFlag = false;
                 PublisherEntity temp = getSelectionElement();
                 textTitle.setText(temp.getTitle());
                 ComboBoxCity.getSelectionModel().select(temp.getCity());
+                addButton.setText("Изменить");
             }
         }
     }
 
     @FXML
-    private void initialize() {
-        cityService.getAll();
-        publisherService.getAll();
-        dataList.setItems(publisherService.getData());
-        ComboBoxCity.setItems(cityService.getData());
+    void editModeHandler(MouseEvent event) {
+        dataList.editableProperty().setValue(false);
+        textTitle.clear();
+        addButton.setText("Добавить");
     }
 
-
+    private PublisherEntity getSelectionElement() {
+        PublisherEntity temp = dataList.getSelectionModel().getSelectedItem();
+        return temp;
+    }
 }

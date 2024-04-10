@@ -43,6 +43,17 @@ public class GenreService {
         }
     }
 
+    public void update(GenreEntity data, GenreEntity selectionElement) {
+        String temp = http.put(properties.getUpdateGenre(), service.getJson(data));
+        DataResponse<GenreEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
+            this.data.add(respose.getData());
+
+        } else {
+            throw new RuntimeException(respose.getMessage());
+        }
+    }
+
     public void delete(GenreEntity data) {
         String temp = http.delete(properties.getDeleteGenre(), data.getId());
         DataResponse<GenreEntity> response = service.getObject(temp, BaseResponse.class);

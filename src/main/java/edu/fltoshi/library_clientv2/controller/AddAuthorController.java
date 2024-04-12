@@ -1,6 +1,7 @@
 package edu.fltoshi.library_clientv2.controller;
 
 import edu.fltoshi.library_clientv2.entity.AuthorEntity;
+import edu.fltoshi.library_clientv2.service.AlertService;
 import edu.fltoshi.library_clientv2.service.AuthorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.stage.Stage;
 
 public class AddAuthorController {
     private final AuthorService service = new AuthorService();
+    AlertService alertService = new AlertService();
     private boolean addFlag = true;
 
     private AuthorEntity getSelectionElement() {
@@ -50,20 +52,23 @@ public class AddAuthorController {
 
     @FXML
     void addAction(ActionEvent event) {
-        AuthorEntity author = new AuthorEntity();
-        author.setLastname(textLastname.getText());
-        author.setName(textFirstname.getText());
-        author.setSurname(textSurname.getText());
-        if (addFlag) {
-            service.add(author);
-        } else {
-            author.setId(getSelectionElement().getId());
-            service.update(author, getSelectionElement());
+        try {
+            AuthorEntity author = new AuthorEntity();
+            author.setLastname(textLastname.getText());
+            author.setName(textFirstname.getText());
+            author.setSurname(textSurname.getText());
+            if (addFlag) {
+                service.add(author);
+            } else {
+                author.setId(getSelectionElement().getId());
+                service.update(author, getSelectionElement());
+            }
+            textLastname.clear();
+            textFirstname.clear();
+            textSurname.clear();
+        } catch (Exception e) {
+            alertService.addVoid(e);
         }
-        textLastname.clear();
-        textFirstname.clear();
-        textSurname.clear();
-
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
         addButton.setText("Добавить");
@@ -76,8 +81,15 @@ public class AddAuthorController {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        Stage stage = (Stage) deleteButton.getScene().getWindow();
-        stage.close();
+        try {
+            service.delete(getSelectionElement());
+            textLastname.clear();
+            textFirstname.clear();
+            textSurname.clear();
+            dataList.editableProperty().setValue(false);
+        } catch (Exception e) {
+            alertService.deleteVoid(e);
+        }
     }
 
     @FXML

@@ -2,6 +2,7 @@ package edu.fltoshi.library_clientv2.controller;
 
 import edu.fltoshi.library_clientv2.entity.CityEntity;
 import edu.fltoshi.library_clientv2.entity.PublisherEntity;
+import edu.fltoshi.library_clientv2.service.AlertService;
 import edu.fltoshi.library_clientv2.service.CityService;
 import edu.fltoshi.library_clientv2.service.PublisherService;
 import javafx.event.ActionEvent;
@@ -16,12 +17,11 @@ import javafx.stage.Stage;
 
 public class AddPublisherController {
 
-
-
-
     private final CityService cityService = new CityService();
     private final PublisherService publisherService = new PublisherService();
     private boolean addFlag = true;
+
+    AlertService alertService = new AlertService();
 
     @FXML
     private ComboBox<CityEntity> ComboBoxCity;
@@ -53,16 +53,20 @@ public class AddPublisherController {
 
     @FXML
     void addAction(ActionEvent event) {
-        PublisherEntity publisher = new PublisherEntity();
-        publisher.setTitle(textTitle.getText());
-        publisher.setCity(ComboBoxCity.getSelectionModel().getSelectedItem());
-        if (addFlag) {
-            publisherService.add(publisher);
-        } else {
-            publisher.setId(getSelectionElement().getId());
-            publisherService.update(publisher, getSelectionElement());
+        try {
+            PublisherEntity publisher = new PublisherEntity();
+            publisher.setTitle(textTitle.getText());
+            publisher.setCity(ComboBoxCity.getSelectionModel().getSelectedItem());
+            if (addFlag) {
+                publisherService.add(publisher);
+            } else {
+                publisher.setId(getSelectionElement().getId());
+                publisherService.update(publisher, getSelectionElement());
+            }
+            textTitle.clear();
+        } catch (Exception e) {
+            alertService.addVoid(e);
         }
-        textTitle.clear();
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }
@@ -74,8 +78,12 @@ public class AddPublisherController {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        publisherService.delete(getSelectionElement());
-        textTitle.clear();
+        try {
+            publisherService.delete(getSelectionElement());
+            textTitle.clear();
+        } catch (Exception e) {
+            alertService.deleteVoid(e);
+        }
     }
 
     @FXML

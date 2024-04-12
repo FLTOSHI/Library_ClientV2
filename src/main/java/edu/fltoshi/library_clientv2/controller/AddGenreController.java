@@ -1,6 +1,7 @@
 package edu.fltoshi.library_clientv2.controller;
 
 import edu.fltoshi.library_clientv2.entity.GenreEntity;
+import edu.fltoshi.library_clientv2.service.AlertService;
 import edu.fltoshi.library_clientv2.service.GenreService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ public class AddGenreController {
 
     private boolean addFlag = true;
     GenreService service = new GenreService();
+    AlertService alertService = new AlertService();
 
     @FXML
     private TextField textTitle;
@@ -64,8 +66,13 @@ public class AddGenreController {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        service.delete(getSelectionElement());
-        textTitle.clear();
+        try {
+            service.delete(getSelectionElement());
+            textTitle.clear();
+        } catch (Exception e) {
+            alertService.deleteVoid(e);
+
+        }
     }
 
     @FXML

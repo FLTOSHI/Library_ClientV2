@@ -4,6 +4,7 @@ import edu.fltoshi.library_clientv2.entity.AuthorEntity;
 import edu.fltoshi.library_clientv2.entity.BookEntity;
 import edu.fltoshi.library_clientv2.entity.GenreEntity;
 import edu.fltoshi.library_clientv2.entity.PublisherEntity;
+import edu.fltoshi.library_clientv2.service.AlertService;
 import edu.fltoshi.library_clientv2.service.AuthorService;
 import edu.fltoshi.library_clientv2.service.GenreService;
 import edu.fltoshi.library_clientv2.service.PublisherService;
@@ -26,6 +27,7 @@ public class AddBookController {
     @Setter
     private Optional<BookEntity> book;
 
+    AlertService alertService = new AlertService();
     public void start() {
         if (book.isPresent()) {
             textTitle.setText(book.get().getTitle());

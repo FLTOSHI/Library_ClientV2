@@ -28,7 +28,7 @@ public class HTTPService {
         }
     }
 
-    public String post(String url, String data){
+    public String post(String url, String data) {
         String result = "";
         RequestBody body = RequestBody.create(data, JSON);
         Request.Builder requestBuilder = new Request.Builder().url(url).post(body);
@@ -39,14 +39,14 @@ public class HTTPService {
                 throw new IOException("Запрос к серверу не был успешен: " + response.code() + " " + response.message());
             }
             result = response.body().string();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return result;
         }
     }
 
-    public String put(String url, String data){
+    public String put(String url, String data) {
         String result = "";
         RequestBody body = RequestBody.create(data, JSON);
         Request.Builder requestBuilder = new Request.Builder().url(url).post(body);
@@ -57,14 +57,14 @@ public class HTTPService {
                 throw new IOException("Запрос к серверу не был успешен: " + response.code() + " " + response.message());
             }
             result = response.body().string();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             return result;
         }
     }
 
-    public String delete(String url, Long id){
+    public String delete(String url, Long id) {
         String result = "";
         Request.Builder requestBuild = new Request.Builder().url(url + id).delete();
         Request request = requestBuild.build();
@@ -74,10 +74,10 @@ public class HTTPService {
 
             }
             result = response.body().string();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            return  result;
+            return result;
         }
     }
 }

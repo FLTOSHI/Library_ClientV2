@@ -3,6 +3,7 @@ package edu.fltoshi.library_clientv2.controller;
 import edu.fltoshi.library_clientv2.entity.AuthorEntity;
 import edu.fltoshi.library_clientv2.entity.BookEntity;
 import edu.fltoshi.library_clientv2.entity.CityEntity;
+import edu.fltoshi.library_clientv2.service.AlertService;
 import edu.fltoshi.library_clientv2.service.CityService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class AddCityController {
     @Getter
     @Setter
     private Optional<CityEntity> city;
-
+    AlertService alertService = new AlertService();
     CityService service = new CityService();
     private boolean addFlag = true;
 
@@ -55,6 +56,7 @@ public class AddCityController {
         CityEntity temp = dataList.getSelectionModel().getSelectedItem();
         return temp;
     }
+
     @FXML
     void addAction(ActionEvent event) {
         try {
@@ -68,11 +70,11 @@ public class AddCityController {
             }
             textTitle.clear();
         } catch (Exception e) {
+            alertService.addVoid(e);
         }
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
         addButton.setText("Добавить");
-
     }
 
     @FXML
@@ -86,6 +88,7 @@ public class AddCityController {
             service.delete(getSelectionElement());
             textTitle.clear();
         } catch (Exception e) {
+            alertService.deleteVoid(e);
         }
     }
 

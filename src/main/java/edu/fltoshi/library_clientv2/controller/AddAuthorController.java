@@ -71,8 +71,7 @@ public class AddAuthorController {
 
     @FXML
     void cancelAction(ActionEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        addFlag = true;
     }
 
     @FXML

@@ -5,7 +5,6 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class HTTPService {
-
     private static OkHttpClient client = new OkHttpClient();
     private final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
@@ -65,7 +64,7 @@ public class HTTPService {
         }
     }
 
-    public String delete(String url, Long id) {
+    public String delete(String url, Long id){
         String result = "";
         Request.Builder requestBuild = new Request.Builder().url(url + id).delete();
         Request request = requestBuild.build();
@@ -75,10 +74,10 @@ public class HTTPService {
 
             }
             result = response.body().string();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         } finally {
-            return result;
+            return  result;
         }
     }
 }

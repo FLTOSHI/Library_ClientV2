@@ -60,7 +60,6 @@ public class MainApplication extends Application {
 
             dialogStage.showAndWait();
             book = controller.getBook();
-            System.out.println(book);
             mainController.setBook(book);
         } catch (IOException e) {
             e.printStackTrace();

@@ -64,8 +64,8 @@ public class AddPublisherController {
                 publisherService.update(publisher, getSelectionElement());
             }
             textTitle.clear();
-        } catch (Exception e) {
-            alertService.addVoid(e);
+        } catch (Exception exception) {
+            alertService.addVoid(exception);
         }
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
@@ -81,8 +81,8 @@ public class AddPublisherController {
         try {
             publisherService.delete(getSelectionElement());
             textTitle.clear();
-        } catch (Exception e) {
-            alertService.deleteVoid(e);
+        } catch (Exception exception) {
+            alertService.deleteVoid(exception);
         }
     }
 

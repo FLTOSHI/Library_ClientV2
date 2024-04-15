@@ -111,8 +111,8 @@ cd "%EXEC_DIR%"
 IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
 
 @setlocal EnableExtensions EnableDelayedExpansion
-for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
-@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
+for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_propertiesS=!JVM_CONFIG_MAVEN_propertiesS! %%a
+@endlocal & set JVM_CONFIG_MAVEN_propertiesS=%JVM_CONFIG_MAVEN_propertiesS%
 
 :endReadAdditionalConfig
 
@@ -122,7 +122,7 @@ set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
 set DOWNLOAD_URL="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
 
-FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
+FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.propertieserties") DO (
     IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
 )
 
@@ -159,7 +159,7 @@ if exist %WRAPPER_JAR% (
 set MAVEN_CMD_LINE_ARGS=%*
 
 %MAVEN_JAVA_EXE% ^
-  %JVM_CONFIG_MAVEN_PROPS% ^
+  %JVM_CONFIG_MAVEN_propertiesS% ^
   %MAVEN_OPTS% ^
   %MAVEN_DEBUG_OPTS% ^
   -classpath %WRAPPER_JAR% ^

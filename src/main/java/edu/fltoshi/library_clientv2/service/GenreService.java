@@ -45,12 +45,12 @@ public class GenreService {
 
     public void update(GenreEntity data, GenreEntity selectionElement) {
         String temp = http.put(properties.getUpdateGenre(), service.getJson(data));
-        DataResponse<GenreEntity> respose = service.getObject(temp, dataType);
-        if (respose.isSuccess()) {
-            this.data.add(respose.getData());
+        DataResponse<GenreEntity> response = service.getObject(temp, dataType);
+        if (response.isSuccess()) {
+            this.data.add(response.getData());
 
         } else {
-            throw new RuntimeException(respose.getMessage());
+            throw new RuntimeException(response.getMessage());
         }
     }
 

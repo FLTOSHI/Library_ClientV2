@@ -49,9 +49,9 @@
    <bottom>
       <HBox prefHeight="36.0" prefWidth="600.0" styleClass="HBox" stylesheets="@Win98.css" BorderPane.alignment="CENTER">
          <children>
-            <ButtonBar prefHeight="36.0" prefWidth="300.0" styleClass="buttonBar">
+            <ButtonBar prefHeight="34.0" prefWidth="1026.0" styleClass="buttonBar">
               <buttons>
-                  <Button mnemonicParsing="false" onAction="#addBookAction" prefHeight="25.0" stylesheets="@Win98.css" text="Добавить" />
+                  <Button mnemonicParsing="false" onAction="#addBookAction" prefHeight="27.0" prefWidth="609.0" stylesheets="@Win98.css" text="Добавить" />
                   <Button mnemonicParsing="false" onAction="#changeBookAction" prefHeight="25.0" prefWidth="98.0" stylesheets="@Win98.css" text="Изменить" />
                 <Button minWidth="32.0" mnemonicParsing="false" onAction="#deleteBookAction" prefHeight="25.0" prefWidth="210.0" stylesheets="@Win98.css" text="Удалить" />
               </buttons>
@@ -60,7 +60,7 @@
       </HBox>
    </bottom>
    <center>
-      <TableView fx:id="bookTable" prefHeight="373.0" prefWidth="607.0" styleClass="tableView" stylesheets="@Win98.css" BorderPane.alignment="CENTER">
+      <TableView fx:id="bookTable" styleClass="tableView" stylesheets="@Win98.css" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="columnNumber" prefWidth="50.0" styleClass="tableColumn" text="Год" />
           <TableColumn fx:id="columnTitle" prefWidth="308.0" styleClass="tableColumn" text="Название" />

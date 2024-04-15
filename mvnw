@@ -223,7 +223,7 @@ else
     while IFS="=" read key value; do
       case "$key" in (wrapperUrl) jarUrl="$value"; break ;;
       esac
-    done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
+    done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.propertieserties"
     if [ "$MVNW_VERBOSE" = true ]; then
       echo "Downloading from: $jarUrl"
     fi

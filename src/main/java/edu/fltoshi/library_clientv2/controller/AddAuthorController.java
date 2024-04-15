@@ -66,8 +66,8 @@ public class AddAuthorController {
             textLastname.clear();
             textFirstname.clear();
             textSurname.clear();
-        } catch (Exception e) {
-            alertService.addVoid(e);
+        } catch (Exception exception) {
+            alertService.addVoid(exception);
         }
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
@@ -87,8 +87,8 @@ public class AddAuthorController {
             textFirstname.clear();
             textSurname.clear();
             dataList.editableProperty().setValue(false);
-        } catch (Exception e) {
-            alertService.deleteVoid(e);
+        } catch (Exception exception) {
+            alertService.deleteVoid(exception);
         }
     }
 

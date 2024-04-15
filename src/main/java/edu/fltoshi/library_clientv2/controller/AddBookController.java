@@ -28,6 +28,7 @@ public class AddBookController {
     private Optional<BookEntity> book;
 
     AlertService alertService = new AlertService();
+
     public void start() {
         if (book.isPresent()) {
             textTitle.setText(book.get().getTitle());
@@ -72,17 +73,13 @@ public class AddBookController {
                 .publisher(ComboBoxPublisher.getSelectionModel().getSelectedItem())
                 .author(ComboBoxAuthor.getSelectionModel().getSelectedItem())
                 .build();
-        book = Optional.of(temp);
-        System.out.println(temp);
-
-        if(book.isEmpty()) {
+        if (book.isEmpty()) {
             book = Optional.of(temp);
-            } else {
+        } else {
             temp.setId(book.get().getId());
-            book = Optional.of(temp);
         }
-
-
+        System.out.println(temp);
+        book = Optional.of(temp);
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }

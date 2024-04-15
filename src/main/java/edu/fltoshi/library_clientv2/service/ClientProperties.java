@@ -11,16 +11,12 @@ import java.util.Properties;
 public class ClientProperties {
     private final Properties properties = new Properties();
 
-    private String allAuthor;
-    private String findByIdAuthor;
-    private String saveAuthor;
-    private String updateAuthor;
     private String allBook;
     private String findByIdBook;
-    private String findByAuthorInBook;
-    private String findByTitleInBook;
     private String saveBook;
     private String updateBook;
+    private String findByAuthorInBook;
+    private String findByTitleInBook;
     private String allCity;
     private String findByIdCity;
     private String saveCity;
@@ -33,11 +29,16 @@ public class ClientProperties {
     private String findByIdPublisher;
     private String savePublisher;
     private String updatePublisher;
-    private String deleteAuthor;
     private String deleteBook;
     private String deleteCity;
     private String deleteGenre;
     private String deletePublisher;
+
+    private String findByIdAuthor;
+    private String allAuthor;
+    private String saveAuthor;
+    private String updateAuthor;
+    private String deleteAuthor;
 
     public ClientProperties() {
         try (InputStream input = MainApplication.class.getClassLoader().getResourceAsStream("config.properties")) {

@@ -69,8 +69,8 @@ public class AddCityController {
                 service.update(city, getSelectionElement());
             }
             textTitle.clear();
-        } catch (Exception e) {
-            alertService.addVoid(e);
+        } catch (Exception exception) {
+            alertService.addVoid(exception);
         }
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
@@ -87,8 +87,8 @@ public class AddCityController {
         try {
             service.delete(getSelectionElement());
             textTitle.clear();
-        } catch (Exception e) {
-            alertService.deleteVoid(e);
+        } catch (Exception exception) {
+            alertService.deleteVoid(exception);
         }
     }
 

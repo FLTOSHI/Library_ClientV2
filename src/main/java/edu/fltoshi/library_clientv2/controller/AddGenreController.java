@@ -43,16 +43,20 @@ public class AddGenreController {
 
     @FXML
     void addAction(ActionEvent event) {
-        GenreEntity genre = new GenreEntity();
-        genre.setTitle(textTitle.getText());
-        if (addFlag) {
-            service.add(genre);
-        } else {
-            genre.setId(getSelectionElement().getId());
-            service.update(genre, getSelectionElement());
-        }
-        textTitle.clear();
+        try {
 
+            GenreEntity genre = new GenreEntity();
+            genre.setTitle(textTitle.getText());
+            if (addFlag) {
+                service.add(genre);
+            } else {
+                genre.setId(getSelectionElement().getId());
+                service.update(genre, getSelectionElement());
+            }
+            textTitle.clear();
+        } catch (Exception exception) {
+            alertService.addVoid(exception);
+        }
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
         addButton.setText("Добавить");
@@ -69,9 +73,8 @@ public class AddGenreController {
         try {
             service.delete(getSelectionElement());
             textTitle.clear();
-        } catch (Exception e) {
-            alertService.deleteVoid(e);
-
+        } catch (Exception exception) {
+            alertService.deleteVoid(exception);
         }
     }
 

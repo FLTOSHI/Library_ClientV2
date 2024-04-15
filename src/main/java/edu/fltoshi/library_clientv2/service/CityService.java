@@ -11,19 +11,23 @@ import lombok.Getter;
 
 import java.lang.reflect.Type;
 public class CityService {
+
     @Getter
     private ObservableList<CityEntity> data = FXCollections.observableArrayList();
     private final HTTPService http = new HTTPService();
     JSONService service = new JSONService();
-    ClientProperties properties = new ClientProperties();
+    ClientProperties prop = new ClientProperties();
     private Type dataType = new TypeToken<DataResponse<CityEntity>>() {
-    }.getType();
+
+    }.getType(); //фиксируем тип DataResponce<BookEntity>
+
     private Type listType = new TypeToken<ListResponse<CityEntity>>() {
-    }.getType();
+
+    }.getType(); //фиксируем тип DataResponce<BookEntity>
 
     public void getAll() {
         ListResponse<CityEntity> data = new ListResponse<>();
-        data = service.getObject(http.get(properties.getAllCity()), listType);
+        data = service.getObject(http.get(prop.getAllCity()), listType);
         if (data.isSuccess()) {
             this.data.addAll(data.getData());
             this.data.forEach(System.out::println);
@@ -33,28 +37,7 @@ public class CityService {
     }
 
     public void add(CityEntity data) {
-        String temp = http.post(properties.getSaveCity(), service.getJson(data));
-        DataResponse<CityEntity> response = service.getObject(temp, dataType);
-        if (response.isSuccess()) {
-            this.data.remove(data);
-            this.data.add(response.getData());
-        } else {
-            throw new RuntimeException(response.getMessage());
-        }
-    }
-
-    public void delete(CityEntity data) {
-        String temp = http.delete(properties.getDeleteCity(), data.getId());
-        DataResponse<CityEntity> response = service.getObject(temp, BaseResponse.class);
-        if (response.isSuccess()) {
-            this.data.remove(data);
-        } else {
-            throw new RuntimeException(response.getMessage());
-        }
-    }
-
-    public void update(CityEntity data, CityEntity selectionElement) {
-        String temp = http.put(properties.getUpdateCity(), service.getJson(data));
+        String temp = http.post(prop.getSaveCity(), service.getJson(data));
         DataResponse<CityEntity> respose = service.getObject(temp, dataType);
         if (respose.isSuccess()) {
             this.data.add(respose.getData());
@@ -64,13 +47,38 @@ public class CityService {
         }
     }
 
-    public void findById(CityEntity data) {
-        String temp = http.get(properties.getFindByIdCity()) + data.getId();
-        DataResponse<CityEntity> response = service.getObject(temp, dataType);
+
+    public void update(CityEntity data, CityEntity selectionElement) {
+        String temp = http.put(prop.getUpdateCity(), service.getJson(data));
+        DataResponse<CityEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
+            this.data.add(respose.getData());
+
+        } else {
+            throw new RuntimeException(respose.getMessage());
+        }
+    }
+
+    public void delete(CityEntity data) {
+        String temp = http.delete(prop.getDeleteCity(), data.getId());
+        BaseResponse response = service.getObject(temp, BaseResponse.class);
         if (response.isSuccess()) {
-            this.data.add(response.getData());
+            this.data.remove(data);
         } else {
             throw new RuntimeException(response.getMessage());
         }
+    }
+
+
+    public void findById(CityEntity data) {
+        String temp = http.get(prop.getFindByIdCity() + data.getId());
+        DataResponse<CityEntity> respose = service.getObject(temp, dataType);
+        if (respose.isSuccess()) {
+            this.data.add(respose.getData());
+
+        } else {
+            throw new RuntimeException(respose.getMessage());
+        }
+
     }
 }
